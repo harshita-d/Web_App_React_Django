@@ -1,0 +1,5 @@
+[nix]
+channel = "stable-24_05"
+
+[run]
+command = "docker-compose up"

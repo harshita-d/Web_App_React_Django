@@ -15,3 +15,9 @@
 
 ## command to start django service
 - docker-compose up
+
+## to stop docker container
+- docker-compose down
+
+## test framework
+- tests.py or tests/test_[name] and only one we can use

@@ -13,6 +13,9 @@
 ## create django project
 - docker-compose run --rm app sh -c "django-admin startproject app ."
 
+## command to create a new app
+- docker-compose run --rm app sh -c "python manage.py startapp core"
+
 ## command to start django service
 - docker-compose up
 

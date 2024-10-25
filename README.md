@@ -24,3 +24,15 @@
 
 ## test framework
 - tests.py or tests/test_[name] and only one we can use
+
+## Migrations
+- to migrate ensure app is enabled in settings.py
+
+- command to make migrations
+```
+docker-compose run --rm app sh -c "python manage.py makemigrations"
+```
+- to apply migrations to DB
+```
+docker-compose run --rm app sh -c "python manage.py migrate"
+```

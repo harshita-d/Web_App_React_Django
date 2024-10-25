@@ -13,5 +13,26 @@
 ## create django project
 - docker-compose run --rm app sh -c "django-admin startproject app ."
 
+## command to create a new app
+- docker-compose run --rm app sh -c "python manage.py startapp core"
+
 ## command to start django service
 - docker-compose up
+
+## to stop docker container
+- docker-compose down
+
+## test framework
+- tests.py or tests/test_[name] and only one we can use
+
+## Migrations
+- to migrate ensure app is enabled in settings.py
+
+- command to make migrations
+```
+docker-compose run --rm app sh -c "python manage.py makemigrations"
+```
+- to apply migrations to DB
+```
+docker-compose run --rm app sh -c "python manage.py migrate"
+```

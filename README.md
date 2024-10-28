@@ -63,3 +63,5 @@ docker-compose run --rm app sh -c "python manage.py migrate"
 - Set AUTH_USER_MODEL in setting.py
 - Create and Run migrations
 - create custom model before running migrations
+
+> while doing python manage.py migrate command if we get `django.db.migrations.exceptions.InconsistentMigrationHistory` error than you find a db by the name `web_app_react_django_dev-db-data`. we need to remove this `docker volume rm web_app_react_django_dev-db-data` and if you get `volume is in use` error than `docker-compose down` and run again `docker volume rm web_app_react_django_dev-db-data`

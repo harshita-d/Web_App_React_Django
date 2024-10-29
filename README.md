@@ -69,3 +69,13 @@ docker-compose run --rm app sh -c "python manage.py migrate"
 ## create superuser via CLI
 
 - `docker-compose run --rm app sh -c "python manage.py createsuperuser"`
+
+## Django Admin
+
+- to customize the django admin we need to create class based off `ModelAdmin` or `UserAdmin`
+- we can add
+  - `ordering`: changes the order the item appears
+  - `list_display`: fields to appear in list
+  - `fieldset`: control the layout of page
+  - `readonly_fields`: fields that cannot be changed
+  - `add_fieldsets`: fields displayed only in add page

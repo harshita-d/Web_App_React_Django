@@ -79,3 +79,16 @@ docker-compose run --rm app sh -c "python manage.py migrate"
   - `fieldset`: control the layout of page
   - `readonly_fields`: fields that cannot be changed
   - `add_fieldsets`: fields displayed only in add page
+
+## User profile endpoints
+
+- `user/create/`
+  - POST - Register a new user
+- `user/token/`
+  - POST-create new token
+- `user/me/`
+  - PUT/PATCH - Update profile
+  - GET-View Profile
+
+> `Public Test` are unauthenticated request
+> `Private Test` are authenticated request

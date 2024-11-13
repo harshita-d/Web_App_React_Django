@@ -92,3 +92,5 @@ docker-compose run --rm app sh -c "python manage.py migrate"
 
 > `Public Test` are unauthenticated request
 > `Private Test` are authenticated request
+
+> `Token`: Token [token]

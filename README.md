@@ -94,3 +94,16 @@ docker-compose run --rm app sh -c "python manage.py migrate"
 > `Private Test` are authenticated request
 
 > `Token`: Token [token]
+
+## Recipe API
+
+- Create
+  - `/recipes/`: POST
+- List
+  - `/recipes/`: GET
+- View details
+  - `/recipes/<id>`: GET
+- update
+  - `/recipes/<id>`: PUT/PATCH
+- Delete
+  - `/recipes/<id>`: DELETE

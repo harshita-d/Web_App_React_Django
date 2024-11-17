@@ -94,6 +94,15 @@ docker-compose run --rm app sh -c "python manage.py migrate"
   - `PUT/PATCH`-> `update()` or `partial_update()`
   - `DELETE`->`destroy()`
 
+  - default methods provides are:
+
+    | **Method**        | **Standard Action**        | **Purpose**                          |
+    | ----------------- | -------------------------- | ------------------------------------ |
+    | `get_queryset`    | `list`, `retrieve`         | Define which objects are retrieved.  |
+    | `perform_create`  | `create`                   | Customize the creation of an object. |
+    | `perform_update`  | `update`, `partial_update` | Customize updates.                   |
+    | `perform_destroy` | `destroy`                  | Customize the deletion of an object. |
+
 - `generic` views: if we create views using generic views We have to manually define a separate views for each operations.
 
   - `GET`->`ListAPIView`

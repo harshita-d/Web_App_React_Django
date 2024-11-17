@@ -100,3 +100,16 @@ DELETE → destroy()
 
 > `Generic Views`: More suited for APIs focused on one or two operations. \
 > `ViewSet`: More powerful when you need both CRUD and custom actions.
+
+## URLS
+
+- `app_name` : It means when referring to urls in this user app, we can use this namespace to avoid conflicts between different apps in the project
+
+- `create/`: This URL maps the `POST` request for create user to the `CreateUserView`.
+
+- `token/`: This maps `POST` request for generating an authentication token to the `CreateTokenView`.
+
+- `me/`: this request maps the authenticated user to `ManageUserView`. It allows `GET`, `PUT` and `Patch` request because of `RetrieveUpdateAPIView`.
+
+- `as_view`: This method is called on class-based view to create an instance of the view.
+  - when we define a class-based view in django, we don't call the class directly like a function, instead use as_view() to instantiate the view.

@@ -160,3 +160,11 @@ urlpatterns = [
   - `/recipes/<id>`: PUT/PATCH
 - Delete
   - `/recipes/<id>`: DELETE
+
+## Tags API
+
+- `/recipe/tags/`:
+  - `GET`
+  - `POST`
+  - `PUT/PATCH`
+  - `DELETE`

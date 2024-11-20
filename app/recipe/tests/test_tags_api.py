@@ -16,6 +16,11 @@ def create_user(email="test@example.com", password="testpass123"):
     return get_user_model().objects.create_user(email=email, password=password)
 
 
+def detail_url(tag_id):
+    """return detail tag url"""
+    return reverse("recipe:tag-detail", args=[tag_id])
+
+
 class PublicTagAPITests(TestCase):
     """test for public api"""
 
@@ -65,3 +70,16 @@ class PrivateTagAPI(TestCase):
         self.assertEqual(len(res.data), 1)
         self.assertEqual(res.data[0]["name"], tags.name)
         self.assertEqual(res.data[0]["id"], tags.id)
+
+    def test_update_tag(self):
+        """test update and return new tag"""
+
+        tags = Tag.objects.create(user=self.user, name="Sweet")
+
+        payload = {"name": "Dessert"}
+        url = detail_url(tags.id)
+        res = self.client.patch(url, payload)
+
+        self.assertEqual(res.status_code, status.HTTP_200_OK)
+        tags.refresh_from_db()
+        self.assertEqual(tags.name, payload["name"])

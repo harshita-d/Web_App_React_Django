@@ -133,7 +133,9 @@ urlpatterns = [
   - `readonly_fields`: fields that cannot be changed
   - `add_fieldsets`: fields displayed only in add page
 
-## Nested Serializer: By default in DRF they are read only value but can make them writable.
+## Nested Serializer
+
+- By default in DRF they are read only value but can make them writable.
 
 ## User profile endpoints
 

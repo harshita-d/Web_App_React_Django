@@ -11,6 +11,14 @@
 - `RecipeSerializer` defines the fields of the `CreateRecipe` model that should be included in the serialized data.
 - `RecipeDetailSerializer` extends `RecipeSerializer` and adds description field to the serialized data. This Serializer is used when showing detailed information about the recipe
 - `TagSerializer` defines the fields og the `Tag` model.
+- Many-to-many relationships are handled dynamically using methods like `recipe.tags.add()` and `instance.tags.clear()`.
+- `Tags` is `ManyToManyField`. To handle this relationship django provides methods like
+  - `add()`: add one or more related objects to the relationship
+  - `remove()`: Remove one or more related objects from relationships
+  - `clear()` : remove all related objects from the relationships
+- Since the `tag` field in the `CreateRecipe` model is ManytoMany, this means it expects a list if `Tag model instances`, not raw data or dictionary.
+- with `create_or_get` method if the tag with the given name and email already exist it retrieves it otherwise create a new `Tag model instance`. these instance are than added to the recipe tags using add()
+- `setattr` does not support these operations. it expects a fully processed data that matches the field type.
 
 ## views
 

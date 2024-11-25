@@ -172,3 +172,17 @@ urlpatterns = [
   - `POST`
   - `PUT/PATCH`
   - `DELETE`
+
+## Ingredients API
+
+- add ingredients to recipe
+- it will have `name` and `user`
+- `/api/recipe/ingredients/`: `GET` (list all the ingredients a user has in his system)
+- `/api/recipe/ingredients/<id>/`:
+  - `GET`: get particular ingredient details
+  - `PUT/PATCH`: Update ingredient
+  - `DELETE`: Remove particular ingredient
+- `/api/recipe/`:
+  - `POST`: create recipe along with ingredients
+- `/api/recipe/<id>/`: updating a detail recipe api
+  - `PUT/PATCH`: create and modify ingredients.

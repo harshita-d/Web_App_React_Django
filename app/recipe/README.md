@@ -20,6 +20,17 @@
 - with `create_or_get` method if the tag with the given name and email already exist it retrieves it otherwise create a new `Tag model instance`. these instance are than added to the recipe tags using add()
 - `setattr` does not support these operations. it expects a fully processed data that matches the field type.
 
+- `serializers.ModelSerializer` directly links to the Recipe/Tag/Ingredient model in model, ensuring that the fields (id and name) are properly serialized. The serializer automatically includes all fields you specify in fields
+- `serializers.Serializer` is a general-purpose serializer. It doesn’t automatically connect to any model. Although you specify `fields = ["id", "name"]` in the Meta class, serializers.Serializer does not process the `Meta` class. It simply ignores it.
+
+  - To use `serializers.Serializer`, you would need to manually define each field and how it should behave:
+
+  ```
+  class IngredientSerializer(serializers.Serializer):
+    id = serializers.IntegerField(read_only=True)
+    name = serializers.CharField()
+  ```
+
 ## views
 
 - Views are class based views. It extends `ModelViewSet` class in DRF.

@@ -48,7 +48,10 @@ class TagViewSet(
 
 
 class IngredientsViewSet(
-    mixins.UpdateModelMixin, mixins.ListModelMixin, viewsets.GenericViewSet
+    mixins.DestroyModelMixin,
+    mixins.UpdateModelMixin,
+    mixins.ListModelMixin,
+    viewsets.GenericViewSet,
 ):
     """View for Ingredients"""
 

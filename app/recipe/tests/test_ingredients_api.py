@@ -18,6 +18,11 @@ def create_user(email="test@example.com", password="testpass"):
     )
 
 
+def detail_url(ingredient_id):
+    """fetch detail url"""
+    return reverse("recipe:ingredient-detail", args=[ingredient_id])
+
+
 class PublicIngredientsAPI(TestCase):
     """testing public authentication for url"""
 
@@ -64,7 +69,30 @@ class privateIngredientsAPI(TestCase):
 
         self.assertEqual(res.status_code, status.HTTP_200_OK)
         self.assertEqual(len(res.data), 1)
-        print("---------", res.data)
-        print("============", user_ing)
         self.assertEqual(res.data[0]["name"], user_ing.name)
         self.assertEqual(res.data[0]["id"], user_ing.id)
+
+    def test_updating_ingredient_detail(self):
+        """test updating ingredient details"""
+
+        ingredients = Ingredient.objects.create(user=self.user, name="Pepper")
+
+        url = detail_url(ingredient_id=ingredients.id)
+        payload = {"name": "Salt"}
+        res = self.client.patch(url, payload)
+
+        self.assertEqual(res.status_code, status.HTTP_200_OK)
+        ingredients.refresh_from_db()
+        self.assertEqual(ingredients.name, payload["name"])
+
+    def test_delete_ingredient_detail(self):
+        """test deleting ingredient"""
+
+        ingredient = Ingredient.objects.create(user=self.user, name="Pepper")
+
+        url = detail_url(ingredient_id=ingredient.id)
+        res = self.client.delete(url)
+
+        self.assertEqual(res.status_code, status.HTTP_204_NO_CONTENT)
+        ing = Ingredient.objects.filter(user=self.user)
+        self.assertFalse(ing.exists())

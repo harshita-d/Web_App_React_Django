@@ -28,10 +28,11 @@ class RecipeSerializer(serializers.ModelSerializer):
     """Serializer for Recipe API"""
 
     tags = TagSerializer(many=True, required=False)
+    ingredients = IngredientSerializer(many=True, required=False)
 
     class Meta:
         model = CreateRecipe
-        fields = ["id", "title", "time_minutes", "price", "link", "tags"]
+        fields = ["id", "title", "time_minutes", "price", "link", "tags", "ingredients"]
         read_only_fields = ["id"]
 
     def _get_or_create_tags(self, tags, recipe):
@@ -40,11 +41,21 @@ class RecipeSerializer(serializers.ModelSerializer):
             tag_object, created = Tag.objects.get_or_create(user=auth_user, **tag)
             recipe.tags.add(tag_object)
 
+    def _get_or_create_ingredients(self, ingredients, recipe):
+        auth_user = self.context["request"].user
+        for ing in ingredients:
+            ingredient_object, created = Ingredient.objects.get_or_create(
+                user=auth_user, **ing
+            )
+            recipe.ingredients.add(ingredient_object)
+
     def create(self, validated_data):
         """create recipe with tags"""
         tags = validated_data.pop("tags", [])
+        ingredients = validated_data.pop("ingredients", [])
         recipe = CreateRecipe.objects.create(**validated_data)
         self._get_or_create_tags(tags, recipe)
+        self._get_or_create_ingredients(ingredients, recipe)
         return recipe
 
     def update(self, instance, validated_data):

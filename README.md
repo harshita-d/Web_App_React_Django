@@ -49,6 +49,25 @@ docker-compose run --rm app sh -c "python manage.py makemigrations"
 docker-compose run --rm app sh -c "python manage.py migrate"
 ```
 
+## static files:-
+
+- to gather all static files and put it inside `STATIC_ROOT`
+
+```
+python manage.py collectstatic
+```
+
+- `In Development (DEBUG=True)`, Django serves static and media files itself. This setup is simple for development but not efficient for production.
+- `In Production (DEBUG=False)` A dedicated web server (e.g., Nginx or Apache) serves static and media files. Static files are served from STATIC_ROOT. Media files are served from MEDIA_ROOT.
+- `STATIC_URL` and `MEDIA_URL` Defines the URL prefix for accessing static/media files
+  ```
+  http://yourwebsite.com/static/static/style.css
+  http://yourwebsite.com/static/media/profile.jpg
+  ```
+
+- Django uses the MEDIA_URL prefix to recognize that the request is for a media file.
+- Django then checks the directory specified in MEDIA_ROOT to find the requested file.
+
 ## Customize User Model
 
 - create model

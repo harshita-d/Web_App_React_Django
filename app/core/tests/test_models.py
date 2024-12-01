@@ -2,6 +2,7 @@
 tests for models.
 """
 
+from unittest.mock import patch
 from django.test import TestCase
 from django.contrib.auth import get_user_model
 from core import models
@@ -77,3 +78,18 @@ class ModelTest(TestCase):
         )
 
         self.assertEqual(str(ing), ing.name)
+
+    @patch("core.models.uuid.uuid4")
+    # This decorator replaces the uuid4() function (normally from the uuid module)
+    # with a mocked version for the duration of the test.
+    # Instead of generating a random UUID, the mock returns a predefined value ('test-uuid').
+    def test_recipe_file_name_uuid(self, mock_uuid):
+        """test generating image path"""
+        uuid = "test-uuid"
+        mock_uuid.return_value = uuid
+        # sets the mocked uuid4() function to return the string 'test-uuid'.
+
+        file_path = models.recipe_image_file_path(None, "example.jpg")
+        # Calls the function recipe_image_file_path (presumably defined in the core.models module)
+
+        self.assertEqual(file_path, f"uploads/recipe/{uuid}.jpg")

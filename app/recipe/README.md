@@ -31,6 +31,12 @@
     name = serializers.CharField()
   ```
 
+- Custom Action Requires Manual Serializer Initialization just like image.
+  - The upload_image method is a custom action defined with the @action decorator.
+  - DRF does not automatically initialize a serializer for custom actions like it does for standard actions (list, retrieve, etc.).
+  - In upload_image, we need to pass both the recipe instance and request.data to the serializer. This manual initialization is achieved via self.get_serializer().
+- The `get_object()` method fetches the specific recipe instance from the database based on the id provided in the URL.
+
 ## views
 
 - Views are class based views. It extends `ModelViewSet` class in DRF.

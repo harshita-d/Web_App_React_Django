@@ -403,8 +403,9 @@ class ImageUploadTests(TestCase):
         with tempfile.NamedTemporaryFile(suffix=".jpg") as image_file:
             """
             The tempfile module is part of Python’s standard library.
-            Creates a temporary file that exists only within the scope of the with block.
-            Using tempfile.NamedTemporaryFile is ideal for testing scenarios like file uploads because:
+            Creates a temporary file that exists only within the scope of
+            the with block. Using tempfile.NamedTemporaryFile is ideal for testing
+            scenarios like file uploads because:
             It avoids creating permanent files that you must manually delete.
             """
             img = Image.new("RGB", (10, 10))
@@ -414,23 +415,29 @@ class ImageUploadTests(TestCase):
             # saves the created image to a temporary file in JPEG format
 
             image_file.seek(0)
-            # resets the file pointer to the beginning so that file can be read during the upload.
+            # resets the file pointer to the beginning so that
+            # file can be read during the upload.
             """
-            When you write data to a file, the file pointer moves to the end of the written data. For example:
-            After calling img.save(image_file, format='JPEG'), the file pointer is positioned at the end of the file.
-            If you try to read the file or pass it to an upload function, it might behave
-            incorrectly or return no data because the pointer is not at the start.
+            When you write data to a file, the file pointer moves
+            to the end of the written data. For example:
+            After calling img.save(image_file, format='JPEG'),
+            the file pointer is positioned at the end of the file.
+            If you try to read the file or pass it to an upload function,
+            it might behave incorrectly or return no data because the
+            pointer is not at the start.
             """
 
             payload = {"image": image_file}
             res = self.client.post(url, payload, format="multipart")
-            # multipart ensures the request is encoded as a multipart form data, which is required for file uploads
+            # multipart ensures the request is encoded as a multipart form data,
+            # which is required for file uploads
 
         self.recipe.refresh_from_db()
         self.assertEqual(res.status_code, status.HTTP_200_OK)
         self.assertIn("image", res.data)
         self.assertTrue(os.path.exists(self.recipe.image.path))
-        # Checks that the image file physically exists on the server at the expected path (self.recipe.image.path).
+        # Checks that the image file physically exists on the server at the
+        # expected path (self.recipe.image.path).
 
     def test_upload_image_bad_request(self):
         """test if the image upload fails"""

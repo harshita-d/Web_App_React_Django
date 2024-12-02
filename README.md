@@ -60,6 +60,7 @@ python manage.py collectstatic
 - `In Development (DEBUG=True)`, Django serves static and media files itself. This setup is simple for development but not efficient for production.
 - `In Production (DEBUG=False)` A dedicated web server (e.g., Nginx or Apache) serves static and media files. Static files are served from STATIC_ROOT. Media files are served from MEDIA_ROOT.
 - `STATIC_URL` and `MEDIA_URL` Defines the URL prefix for accessing static/media files
+
   ```
   http://yourwebsite.com/static/static/style.css
   http://yourwebsite.com/static/media/profile.jpg
@@ -219,3 +220,13 @@ urlpatterns = [
 - MEDIA_URL: base media url
 - MEDIA_ROOT: path to media filesystem
 - STATIC_ROOT
+
+## Filter API
+
+- filtering recipes as per ingredients and tags
+  - `GET /api/recipe/recipes/?tags=1,2,3`
+  - `GET /api/recipe/recipes/?ingredients=1,2,3`
+- filter tags/ingredients by assigned
+  - `GET /api/recipe/tags/?assigned_only=1`
+  - `GET /api/recipe/ingredients/?assigned_only=1`
+- Define OpenAPI parameters

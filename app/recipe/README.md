@@ -86,6 +86,24 @@
   | Single action (e.g., listing)    | `GenericViewSet` + Relevant Mixins | Lightweight and avoids unnecessary functionality.                                   |
   | Full CRUD functionality required | `ModelViewSet`                     | Simplifies implementation, reduces boilerplate, and provides all necessary actions. |
 
+- `@extend_schema_view`: This decorator is used to override or extend the default schema for specific actions (e.g., list, retrieve, create) of a DRF view.
+
+- `list=extend_schema`
+  The list keyword refers to the list action of the view. This is used for GET requests to fetch multiple items
+
+- `OpenApiParameter`
+  Represents a query parameter for the API documentation.
+
+- `enum=[0, 1]:`
+  Restricts the allowed values to 0 (false) or 1 (true).
+
+```
+tags: Type: OpenApiTypes.STR (string)
+      Description: A comma-separated list of tag IDs to filter the results.
+ingredients:Type: OpenApiTypes.STR (string)
+      Description: A comma-separated list of ingredient IDs to filter the results.
+```
+
 ## URLS
 
 - `DefaultRouter` is special class provided by DRF that automatically creates routes for CURD operations for the viewset you register with. with this we do not have to manually define paths for these operations.With default router `recipe` will be the base URL prefix for this viewset.

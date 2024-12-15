@@ -233,6 +233,5 @@ urlpatterns = [
   - `GET /api/recipe/ingredients/?assigned_only=1`
 - Define OpenAPI parameters
 
-## Published URL
-
-> http://ec2-13-126-91-14.ap-south-1.compute.amazonaws.com/admin/login/?next=/admin/
+## Live Demo
+Check out the deployed application: [Recipe Management System]( http://ec2-13-126-91-14.ap-south-1.compute.amazonaws.com/admin/login/?next=/admin/)

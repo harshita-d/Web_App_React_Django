@@ -1,6 +1,6 @@
 # Web_App_React_Django
 
-- I built a Recipe Management System using Django REST Framework with user authentication, recipe CRUD operations, and filtering by tags and ingredients. The project included token-based authentication, OpenAPI documentation, and image uploads using Pillow. I deployed the Dockerized app on AWS EC2 with efficient media and static file handling. Dynamic filtering via query parameters enhanced usability, while Docker streamlined development and ensured scalability.
+I built a Recipe Management System using Django REST Framework with user authentication, recipe CRUD operations, and filtering by tags and ingredients. The project included token-based authentication, OpenAPI documentation, and image uploads using Pillow. I deployed the Dockerized app on AWS EC2 with efficient media and static file handling. Dynamic filtering via query parameters enhanced usability, while Docker streamlined development and ensured scalability.
   
 ## to build docker image
 

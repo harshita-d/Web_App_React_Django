@@ -161,11 +161,11 @@ urlpatterns = [
 
 ## User profile endpoints
 
-- `user/create/`
+- `api/user/create/`
   - POST - Register a new user
-- `user/token/`
+- `api/user/token/`
   - POST-create new token
-- `user/me/`
+- `api/user/me/`
   - PUT/PATCH - Update profile
   - GET-View Profile
 
@@ -177,15 +177,15 @@ urlpatterns = [
 ## Recipe API
 
 - Create
-  - `/recipes/`: POST
+  - `api/recipes/`: POST
 - List
-  - `/recipes/`: GET
+  - `api/recipes/`: GET
 - View details
-  - `/recipes/<id>`: GET
+  - `api/recipes/<id>`: GET
 - update
-  - `/recipes/<id>`: PUT/PATCH
+  - `api/recipes/<id>`: PUT/PATCH
 - Delete
-  - `/recipes/<id>`: DELETE
+  - `api/recipes/<id>`: DELETE
 
 ## Tags API
 

@@ -86,7 +86,7 @@ python manage.py collectstatic
 - Create and Run migrations
 - create custom model before running migrations
 
-> while doing python manage.py migrate command if we get `django.db.migrations.exceptions.InconsistentMigrationHistory` error than you find a db by the name `web_app_react_django_dev-db-data`. we need to remove this `docker volume rm web_app_react_django_dev-db-data` and if you get `volume is in use` error than `docker-compose down` and run again `docker volume rm web_app_react_django_dev-db-data`
+> while doing python manage.py migrate command if we get `django.db.migrations.exceptions.InconsistentMigrationHistory` error than you find a db by the name `web_app_react_django_dev-db-data`. we need to remove this `docker volume rm web_app_react_django_dev-db-data` and if you get `volume is in use` error than `docker-compose down` and run again `docker volume rm web_app_react_django_dev-db-data` or look for `https://stackoverflow.com/questions/44651760/django-db-migrations-exceptions-inconsistentmigrationhistory`
 
 ## create superuser via CLI
 
